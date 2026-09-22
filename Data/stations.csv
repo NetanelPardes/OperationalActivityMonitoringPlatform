@@ -1,0 +1,9 @@
+station_id,name,sector,status
+station-north-01,North Ridge,North,Active
+station-north-02,North Gate,North,Active
+station-west-01,West Junction,West,Active
+station-west-02,West Outpost,West,Active
+station-east-01,East Quarry,East,Maintenance
+station-east-02,East Crossing,East,Active
+station-south-01,South Bridge,South,Active
+station-south-02,South Field,South,Offline
