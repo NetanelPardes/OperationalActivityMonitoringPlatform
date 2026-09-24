@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 
 import os
 
-myclient = pymongo.MongoClient(os.getenv("MONGO_URL", "mongodb://localhost:27017/"))
+myclient = pymongo.MongoClient(os.environ["MONGO_URL"]) 
 
 mydb = myclient["activity_monitoring"]
 

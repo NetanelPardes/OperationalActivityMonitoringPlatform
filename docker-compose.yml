@@ -116,8 +116,8 @@ services:
 
   statistics:
     build:
-      context: "./StatisticsService"
-      dockerfile: Dockerfile
+      context: ./StatisticsService
+      dockerfile: dockerfile
     environment:
       MONGO_URL: mongodb://mongo:27017/
     depends_on:
@@ -138,6 +138,60 @@ services:
       CRITICAL_THRESHOLD: "4.5"
     depends_on:
       - kafka
+
+  persistence-consumer:
+    build: ./PersistenceConsumer
+    restart: unless-stopped
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:19092
+      ANOMALIES_TOPIC: anomalies
+      PERSISTENCE_GROUP_ID: persistence-consumer
+      MYSQL_CONNECTION_STRING: Server=mysql;Port=3306;Database=Activity_monitoring_platform_Db;User ID=root;Password=root
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_INDEX: anomalies
+      RABBITMQ_HOST: rabbitmq
+      ALERTS_QUEUE: alerts.critical
+    depends_on:
+      kafka:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+      station-loader:
+        condition: service_completed_successfully
+      elasticsearch:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      
+  
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.0
+    restart: unless-stopped
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - curl -fsS http://localhost:9200/_cluster/health > /dev/null
+      interval: 10s
+      timeout: 5s
+      retries: 30
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: unless-stopped
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
 
 volumes:
   mongo-data:
