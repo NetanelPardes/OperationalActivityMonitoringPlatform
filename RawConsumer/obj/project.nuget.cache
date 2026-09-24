@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3VIE0yIashk=",
+  "dgSpecHash": "fU1EvSD+OeA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\sendi\\Desktop\\project\\Operational Activity Monitoring Platform\\RawConsumer\\RawConsumer.csproj",
+  "projectFilePath": "c:\\Users\\sendi\\Desktop\\project\\Operational Activity Monitoring Platform\\RawConsumer\\RawConsumer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sendi\\.nuget\\packages\\confluent.kafka\\2.15.1\\confluent.kafka.2.15.1.nupkg.sha512",
     "C:\\Users\\sendi\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
@@ -67,10 +67,10 @@
     "C:\\Users\\sendi\\.nuget\\packages\\system.text.json\\10.0.12\\system.text.json.10.0.12.nupkg.sha512",
     "C:\\Users\\sendi\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512",
     "C:\\Users\\sendi\\.nuget\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512",
-    "C:\\Users\\sendi\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.30\\microsoft.aspnetcore.app.ref.8.0.30.nupkg.sha512",
-    "C:\\Users\\sendi\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.30\\microsoft.netcore.app.host.win-x64.8.0.30.nupkg.sha512",
     "C:\\Users\\sendi\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.30\\microsoft.netcore.app.ref.8.0.30.nupkg.sha512",
-    "C:\\Users\\sendi\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.30\\microsoft.windowsdesktop.app.ref.8.0.30.nupkg.sha512"
+    "C:\\Users\\sendi\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.30\\microsoft.windowsdesktop.app.ref.8.0.30.nupkg.sha512",
+    "C:\\Users\\sendi\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.30\\microsoft.aspnetcore.app.ref.8.0.30.nupkg.sha512",
+    "C:\\Users\\sendi\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.30\\microsoft.netcore.app.host.win-x64.8.0.30.nupkg.sha512"
   ],
   "logs": []
 }

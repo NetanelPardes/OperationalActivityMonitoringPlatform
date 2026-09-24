@@ -114,6 +114,17 @@ services:
 
     restart: unless-stopped
 
+  analytics:
+    build:
+      context: "./AnalyticsService"
+      dockerfile: Dockerfile
+    environment:
+      MONGO_URL: mongodb://mongo:27017/
+    depends_on:
+      mongo:
+        condition: service_healthy
+    restart: "no"
+
 volumes:
   mongo-data:
 

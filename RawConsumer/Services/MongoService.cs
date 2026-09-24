@@ -15,7 +15,21 @@ public class MongoService : IMongoService
 
     public async Task SaveAsync(ActivityReading reading)
     {
-        await _collection.InsertOneAsync(reading);
+        var filter = Builders<ActivityReading>.Filter.Eq(
+            x => x.EventId, reading.EventId
+        );
+
+        var update = Builders<ActivityReading>.Update
+            .Set(x => x.SourceId, reading.SourceId)
+            .Set(x => x.Timestamp, reading.Timestamp)
+            .Set(x => x.Value, reading.Value);
+
+        await _collection.UpdateOneAsync(
+            filter,
+            update,
+            new UpdateOptions { IsUpsert = true }
+        );
+
         Console.WriteLine($"Saved to MongoDB: {reading.EventId}");
     }
 }
