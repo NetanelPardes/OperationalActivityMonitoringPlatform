@@ -114,9 +114,9 @@ services:
 
     restart: unless-stopped
 
-  analytics:
+  statistics:
     build:
-      context: "./AnalyticsService"
+      context: "./StatisticsService"
       dockerfile: Dockerfile
     environment:
       MONGO_URL: mongodb://mongo:27017/
@@ -124,6 +124,20 @@ services:
       mongo:
         condition: service_healthy
     restart: "no"
+
+  analytics:
+    build: ./AnalyticsService
+    restart: unless-stopped
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:19092
+      ACTIVITY_TOPIC: activity-readings
+      ANOMALIES_TOPIC: anomalies
+      ANALYTICS_GROUP_ID: activity-analytics
+      WINDOW_SIZE: "20"
+      Z_THRESHOLD: "3.5"
+      CRITICAL_THRESHOLD: "4.5"
+    depends_on:
+      - kafka
 
 volumes:
   mongo-data:
